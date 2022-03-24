@@ -37,6 +37,33 @@ namespace EXEPABD
                 con.Close();
             }
         }
+
+        public void InsertData()
+        {
+            SqlConnection con = null;
+            try
+            {
+                con = new SqlConnection("data source=DESKTOP-NH7J05B;database=Exercise;Integrated Security=TRUE");
+                con.Open();
+
+                SqlCommand cm = new SqlCommand("insert into Pegawai (ID_Pegawai, Nama_Pegawai, Alamat, Jabatan) values ('KP001', 'Asri', 'Bandung', 'Apoteker')", con);
+                cm.ExecuteNonQuery();
+
+                Console.WriteLine("Data berhasil ditambahkan");
+                Console.ReadKey();
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine("Data gagal ditambahkan." + e);
+                Console.ReadKey();
+            }
+
+            finally
+            {
+                con.Close();
+            }
+        }
         static void Main(string[] args)
         {
             new Program().CreateTable();
